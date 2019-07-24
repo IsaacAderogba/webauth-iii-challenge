@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../store/actions/userActions';
 
-const Users = () => {
+const Users = (props) => {
+  const { fetchUsers, users } = props;
+    
+  useEffect(() => {
+    fetchUsers();
+  }, [])
+
   return (
     <div>
-      Users
+      {users.map(user => {
+        return <p key={user.username}>{user.username} - {user.department}</p>
+      })}
     </div>
   )
 }
 
-export default Users;
+function mapStateToProps(state) {
+  return {
+    users: state.user
+  }
+}
+
+export default connect(mapStateToProps, {fetchUsers})(Users);

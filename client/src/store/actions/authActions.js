@@ -1,5 +1,4 @@
 import axios from "axios";
-import { axiosWithAuth } from "../helpers/axiosAuth";
 
 export const SIGN_UP = "SIGN_UP";
 export const SIGN_IN = "SIGN_IN";
