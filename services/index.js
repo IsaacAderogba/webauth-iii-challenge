@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 const router = require('express').Router();
 
+const authService = require('./auth');
+// const userService = require('./users');
+
 router.get('/api', (req, res, next) => {
   try {
     res.status(200).json({ message: "Api is up and running" });
@@ -8,6 +11,9 @@ router.get('/api', (req, res, next) => {
     next(err);
   }
 });
+
+router.use('/api/auth', authService);
+// router.use('/api/users', userService);
 
 router.use((err, req, res, next) => {
   res.status(500).json({ message: err.message, stack: err.stack })

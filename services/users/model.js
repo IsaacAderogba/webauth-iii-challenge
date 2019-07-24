@@ -4,9 +4,9 @@ module.exports = {
   findUsersByDepartment: function(department) {
     return db("users").where({ department });
   },
-  findUserByFilterAndDepartment: function(filter, department) {
+  findUserByIdAndDepartment: function(id, department) {
     return db("users")
-      .where({ filter, department })
+      .where({id, department})
       .first();
   }
 };

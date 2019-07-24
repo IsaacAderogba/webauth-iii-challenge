@@ -6,7 +6,7 @@ module.exports = {
     return db("users")
       .insert(user)
       .then(([id]) =>
-        usersController.getUserByFilterAndDepartment(id, user.department)
+        usersController.getUserByIdAndDepartment(id, user.department)
       );
   }
 };
