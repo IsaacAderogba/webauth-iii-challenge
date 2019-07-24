@@ -2,7 +2,7 @@
 const router = require('express').Router();
 
 const authService = require('./auth');
-// const userService = require('./users');
+const userService = require('./users');
 
 router.get('/api', (req, res, next) => {
   try {
@@ -13,7 +13,7 @@ router.get('/api', (req, res, next) => {
 });
 
 router.use('/api/auth', authService);
-// router.use('/api/users', userService);
+router.use('/api/users', userService);
 
 router.use((err, req, res, next) => {
   res.status(500).json({ message: err.message, stack: err.stack })
