@@ -5,8 +5,6 @@ module.exports = {
   insertUser: function(user) {
     return db("users")
       .insert(user)
-      .then(([id]) =>
-        usersController.getUserByIdAndDepartment(id, user.department)
-      );
+      .then(([id]) => usersController.getUserById(id));
   }
 };

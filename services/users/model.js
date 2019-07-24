@@ -1,12 +1,17 @@
 const db = require("../../data/dbConfig");
 
 module.exports = {
-  findUsersByDepartment: function(department) {
-    return db("users").where({ department });
-  },
-  findUserByIdAndDepartment: function(id, department) {
+  findUserById: function(id) {
     return db("users")
-      .where({id, department})
+      .where({ id })
       .first();
+  },
+  findUserByFilter(filter) {
+    return db("users")
+      .where(filter)
+      .first();
+  },
+  findUsersByFilter: function(filter) {
+    return db("users").where(filter);
   }
 };

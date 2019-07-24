@@ -1,10 +1,13 @@
 const Users = require('./model');
 
 module.exports = {
-  getUsersByDepartment: async function(department) {
-    return await Users.findUsersByDepartment(department);
+  getUsersByFilter: async function(filter) {
+    return await Users.findUsersByFilter(filter);
   },
-  getUserByIdAndDepartment: async function(id, department) {
-    return await Users.findUserByIdAndDepartment(id, department);
+  getUserByFilter: async function(filter) {
+    return await Users.findUserByFilter(filter);
+  },
+  getUserById: async function(id) {
+    return await Users.findUserById(id);
   }
 }
