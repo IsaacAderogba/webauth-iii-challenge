@@ -1,19 +1,16 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import Users from './Users';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App App-header">
+      <Route exact path="/" render={routeProps => <SignUp {...routeProps} />} />
+      <Route exact path="/signin" render={routeProps => <SignIn {...routeProps} />} />
+      <Route exact path="/users" render={routeProps => <Users {...routeProps} />} />
     </div>
   );
 }
