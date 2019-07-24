@@ -11,7 +11,12 @@ router.post("/register", validRegisterBody, async (req, res, next) => {
 
   try {
     const registeredUser = await controller.registerUser(req.newUser);
-    res.status(201).json(registeredUser);
+    if (registeredUser) {
+      const token = generateToken(registeredUser);
+      res.status(201).json({registeredUser, token});
+    } else {
+      res.status(400).json({ message: "User could not be created" });
+    }
   } catch (err) {
     next(err);
   }
@@ -25,7 +30,7 @@ router.post("/login", validLoginBody, (req, res, next) => {
         if (user && bcrypt.compareSync(req.user.password, user.password)) {
           const token = generateToken(user);
           res.status(200).json({
-            message: `Welcome ${user.username}!`,
+            user,
             token
           });
         } else {

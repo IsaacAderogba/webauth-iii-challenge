@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App App-header">
       <Route exact path="/" render={routeProps => <SignUp {...routeProps} />} />
-      <Route exact path="/signin" render={routeProps => <SignIn {...routeProps} />} />
+      <Route exact path="/login" render={routeProps => <SignIn {...routeProps} />} />
       <Route exact path="/users" render={routeProps => <Users {...routeProps} />} />
     </div>
   );

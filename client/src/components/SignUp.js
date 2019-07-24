@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { signUp } from '../store/actions/authActions';
+import { withRouter } from 'react-router-dom'
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [department, setDepartment] = useState('');
+  const { signUp, history } = props;
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    console.log(username, password, department);
+    signUp({username, password, department}, history)
   }
-
 
   return (
     <form onSubmit={onSubmitForm}>
@@ -21,4 +24,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp;
+export default connect(null, { signUp })(withRouter(SignUp));
